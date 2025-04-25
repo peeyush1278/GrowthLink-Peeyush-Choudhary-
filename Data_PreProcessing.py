@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
+from pandas.plotting import scatter_matrix
 
 Dataset=pd.read_csv('tested.csv')
 #showing the Dataset information
@@ -55,5 +57,19 @@ Dataset.drop(['Name', 'Ticket', 'PassengerId'], axis=1, inplace=True)
 
 print(Dataset.info())
 
+#creating numerical col
+numeric_cols=Dataset.select_dtypes(include=['int64','float64']).columns
+
+#now creating the boxplot for looking for outliers in data
+Dataset[numeric_cols].boxplot()
+plt.show()
+
+#creating the histogram
+Dataset.hist(bins=50, figsize=(12,8))
+plt.show()
+
+#creating scatter plot
+scatter_matrix(Dataset[numeric_cols], figsize=(12,8))
+plt.show()
 
 
