@@ -54,4 +54,3 @@ pipeline=Pipeline([("ageimputer",AgeImputer()),("featureencoder",FeatureEncoder(
 
 train_set=pipeline.fit_transform(train_set)
 test_set=pipeline.fit_transform(test_set)
-
